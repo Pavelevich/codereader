@@ -1,0 +1,27 @@
+<div class="container">
+  <header class="header">
+    <h1>Barcode Scanner</h1>
+  </header>
+
+  <div class="scanner-container">
+    <div class="scanner-view">
+      <zxing-scanner
+        #scanner
+        [autostart]="true"
+        [tryHarder]="true"
+        [formats]="allowedFormats"
+        (scanComplete)="onScanComplete($event)">
+      </zxing-scanner>
+      <div class="overlay">
+        <div class="border-square" [ngStyle]="getBoundingBoxStyle()"></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="results-section">
+    <h2>Scanned Codes</h2>
+    <ul class="codes-list">
+      <li *ngFor="let code of codesRead">{{ code }}</li>
+    </ul>
+  </section>
+</div>
